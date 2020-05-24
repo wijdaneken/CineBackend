@@ -1,6 +1,5 @@
 package org.sid.cinema.entities;
 
-
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -16,10 +15,13 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor @ToString
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Seance {
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Temporal(TemporalType.TIME)
 	private Date heureDebut;

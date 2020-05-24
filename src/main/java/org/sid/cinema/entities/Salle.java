@@ -18,23 +18,24 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor @ToString
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Salle {
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)	
- private Long id;
- private String name;
- private int nombrePlace;
- @ManyToOne
- //@JsonProperty(access=Access.WRITE_ONLY)
- @JsonProperty(access=Access.WRITE_ONLY)
- private Cinema cinema;
- 
- @OneToMany(mappedBy="salle")
- @JsonProperty(access=Access.WRITE_ONLY) 
- private Collection <Place> place;
- 
- @OneToMany(mappedBy="salle")
-@JsonProperty(access=Access.WRITE_ONLY)
- private Collection <Projection> projection;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String name;
+	private int nombresPlaces;
+	@ManyToOne
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private Cinema cinema;
+	@OneToMany(mappedBy = "salle")
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private Collection<Place> places;
+	@OneToMany(mappedBy = "salle")
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private Collection<Projection> projections;
+
 }

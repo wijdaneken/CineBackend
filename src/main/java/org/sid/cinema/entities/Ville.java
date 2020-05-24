@@ -14,15 +14,15 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor @ToString
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Ville {
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-
-
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private double longitude, latitude, altitude;
-    @OneToMany(mappedBy="ville")
-	Collection<Cinema> cinemas;
+	private double longtide, latitude, altitude;
+	@OneToMany(mappedBy = "ville")
+	private Collection<Cinema> cinemas;
 }

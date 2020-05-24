@@ -19,10 +19,13 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Data @AllArgsConstructor @NoArgsConstructor @ToString
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Film {
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String titre;
 	private String description;
@@ -30,9 +33,9 @@ public class Film {
 	private Date dateSortie;
 	private double duree;
 	private String photo;
-	@OneToMany
-   @JsonProperty(access=Access.WRITE_ONLY)
-	private Collection <Projection> projection;
+	@OneToMany(mappedBy="film")
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private Collection<Projection> projections;
 	@ManyToOne
 	private Categorie categorie;
 
