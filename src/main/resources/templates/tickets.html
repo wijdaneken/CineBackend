@@ -1,0 +1,71 @@
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="templae1">
+<head>
+<meta charset="utf-8">
+<title>tickets</title>
+
+<link rel= "stylesheet" type="text/css" href= "/webjars/bootstrap/4.1.3/css/bootstrap.min.css"/>
+
+</head>
+<body> <div layout:fragment="pageContent">
+		<div class="container mt-5">
+			<div class="card">
+				<div class="card-header">Tickets</div>
+				<div class="card-body">
+
+					<form method="get" th:actions="@{ticketss}">
+						<div class="form-group">
+							<label>Name:</label> <input type="text" name="keyword"
+								placeholder="Search name.." th:value="${keyword}">
+							<button class="btn btn-dark">Search</button>
+						</div>
+					</form>
+
+					<table class="table">
+						<tr>
+
+							<th>ID</th>
+							<th>Nom Client</th>
+							<th>Prix</th>
+							<th>Code Paiement</th>
+							<th>reserve</th>
+							<th>Place</th>
+						
+						</tr>
+						<tr th:each="p:${tickets}">
+<td th:text="${p.id}"></td>
+<td th:text="${p.nomClient}"></td>
+<td th:text="${p.prix}"></td>
+<td th:text="${p.codePaiement}"></td>
+<td th:text="${p.reserve}"></td>
+<td th:text="${p.place.id}"></td>
+<td th:text="${p.projection.id}"></td>
+						
+							<td><a
+								onclick="return confirm ('Voulez vous vraiment supprimer ?')"
+								class="btn btn-danger"
+								th:href="@{deleteticket(id=${p.id},        
+          keyword=${keyword},page=${currentPage},size=${size})}">Delete</a>
+							</td>
+							<td><a class="btn btn-dark"
+								th:href="@{ticketupdate(id=${p.id})}">Edit</a></td>							
+
+						</tr>
+					</table>
+
+				
+					<ul class="nav nav-pills">
+						<li th:each="page,status:${pages}"><a
+							th:class="${status.index==currentPage?'btn btn.primary':'btn'}"
+							th:href="@{ticketss(page=${status.index},keyword=${keyword}, size=${$size})}"
+							th:text="${status.index}"></a></li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

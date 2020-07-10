@@ -1,0 +1,55 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="templae1">
+<head>
+<meta charset="utf-8">
+<title>projections</title>
+</head>
+<body>
+	<div layout:fragment="pageContent">
+	<div class="container mt-5">
+		<div class="card">
+			<div class="card-header">Liste des projections</div>
+			<div class="card-body">
+
+				<form method="get" th:actions="@{projectionss}"></form>
+				<table class="table">
+					<tr>
+						<th>id</th>
+						<th>dateProjection</th>
+						<th>prix</th>
+						<th>salle</th>
+						<th>film</th>
+						<th>seance</th>
+					</tr>
+					<tr th:each="p:${projections}">
+						<td th:text="${p.id}"></td>
+						<td th:text="${p.dateProjection}"></td>
+						<td th:text="${p.prix}"></td>
+						<td th:text="${p.salle.name}"></td>
+						<td th:text="${p.film.titre}"></td>
+						<td th:text="${p.seance.id}"></td>
+						<td><a onclick="return confirm('voulez vous vrm suuprimer?')"
+							class="btn btn-danger"
+							th:href="@{deleteProj(id=${p.id},keyword=${keyword},page=${currentPage},size=${size})}"
+							th:method="delete">Delete</a></td>
+
+						<td><a class="btn btn-dark"
+							th:href="@{projectionupdate(id=${p.id})}">Edit</a></td>
+					</tr>
+				</table>
+				<a class="btn btn-dark" th:href="@{Formproj}">Ajouter</a>
+				<ul class="nav nav-pills">
+					<li th:each="page,status:${pages}"><a
+						th:class="${status.index==currentPage?'btn btn.primary':'btn'}"
+						th:href="@{projectionss(page=${status.index},keyword=${keyword}, size=${$size})}"
+						th:text="${status.index}"></a></li>
+				</ul>
+				<input type="hidden" name="_csrf"
+					value="61390c32-08f8-4c85-b55a-fe20bc7f0913" />
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

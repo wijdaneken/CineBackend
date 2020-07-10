@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="templae1">
+<head>
+<meta charset="utf-8">
+<title>cinemas</title>
+</head>
+<body>
+	<div layout:fragment="pageContent">
+		<div class="container mt-5">
+		<div class="col-md-6">
+			<div class="card ">
+				<div class="card-header" th:if="${mode=='new'}">Entry form</div>
+				<div class="card-header" th:if="${mode=='edit'}">Update form</div>
+				<div class="card-body">
+					<form th:action="@{saveCinema}" method="post">
+						 
+						<div class="form-group">
+							<label class="control-label">Name:</label> <input type="text"
+								name="name" class="form-control" th:value="${cinema.name}">
+							<span th:errors=${cinema.name} class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Room number:</label> <input
+								type="text" name="nombreSalles" class="form-control"
+								th:value="${cinema.nombreSalles}"> <span
+								th:errors=${cinema.nombreSalles}></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Longitude:</label> <input
+								type="text" name="longtide" class="form-control"
+								th:value="${cinema.longtide}"> <span
+								th:errors=${cinema.longtide}></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Laltitude:</label> <input
+								type="text" name="latitude" class="form-control"
+								th:value="${cinema.latitude}"> <span
+								th:errors=${cinema.latitude}></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Altitude:</label> <input type="text"
+								name="altitude" class="form-control"
+								th:value="${cinema.altitude}"> <span
+								th:errors=${cinema.altitude}></span>
+						</div>
+							<div class="form-group">
+							<label class="control-label">Ville:</label> <input type="text"
+								name="ville" class="form-control"
+								th:value="${cinema.ville}"> <span
+								th:errors=${cinema.ville}></span>
+						</div>
+						
+						
+					
+						<button class="btn btn-success" type="submit">Save</button>
+						
+							<a th:href="@{cine}">Retour</a>
+							
+
+					</form>
+				</div>
+			</div>
+</div>
+
+		</div>
+	</div>
+</body>
+</html>

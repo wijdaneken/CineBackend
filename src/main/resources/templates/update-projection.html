@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>projetcion</title>
+</head>
+<body>
+
+	<div class="form-style-5">
+		<div class="panel panel-default ">
+			<div class="panel-heading">
+
+				<a href="http://localhost:8887/projections">Retour</a>
+				<h1>modifer projetcion</h1>
+				<form th:action="@{Sssaveproj}" method="Get"
+					th:object="${projection}">
+					<div class="form-group">
+						<label class="control-label">Date Projection:</label> <input
+							type="text" th:field="*{dateProjection}" name="dateProjection"
+							class="form-control" /> <span></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Prix:</label> <input type="text"
+							th:field="*{prix}" name="prix" class="form-control" /> <span></span>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label">Salle:</label> <input type="text"
+							th:field="*{salle}" name="salle" class="form-control" /> <span></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Film:</label> <input type="text"
+							th:field="*{film}" name="film" class="form-control" /> <span></span>
+					</div>
+					<div class="form-group">
+						<label class="control-label">Seance:</label> <input type="text"
+							th:field="*{seance}" name="seance" class="form-control" /> <span></span>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-primary">Modifier</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

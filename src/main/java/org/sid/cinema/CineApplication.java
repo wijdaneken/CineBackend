@@ -1,5 +1,4 @@
 package org.sid.cinema;
-
 import org.sid.cinema.entities.Film;
 import org.sid.cinema.entities.Salle;
 import org.sid.cinema.entities.Ticket;
@@ -20,12 +19,13 @@ public class CineApplication implements CommandLineRunner {
 	private RepositoryRestConfiguration repositoryRestConfiguration;
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(CineApplication.class, args);
 	}
 
+
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
 		
 		repositoryRestConfiguration.exposeIdsFor(Film.class, Salle.class, Ticket.class);
 		cinemaInitService.initVilles();
@@ -37,6 +37,7 @@ public class CineApplication implements CommandLineRunner {
 		cinemaInitService.initFilms();
 		cinemaInitService.initProjections();
 		cinemaInitService.initTickets();
+		
 	}
 
 }

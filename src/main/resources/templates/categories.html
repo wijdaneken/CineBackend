@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="templae1">
+<head>
+<meta charset="utf-8">
+<title>Categories</title>
+</head>
+<body>
+	<div layout:fragment="pageContent">
+		<div class="container mt-5">
+			<div class="card">
+				<div class="card-header">Categories</div>
+				<div class="card-body">
+
+					<form method="get" th:actions="@{categories}">
+						<div class="form-group">
+							<label>Name:</label> <input type="text" name="keyword"
+								placeholder="Search name.." th:value="${keyword}">
+							<button class="btn btn-dark">Search</button>
+						</div>
+					</form>
+
+					<table class="table">
+						<tr>
+
+							<th>ID</th>
+							<th>Name</th>
+							
+					
+						
+						</tr>
+						<tr th:each="p:${categories}">
+							<td th:text="${p.id}"></td>
+							<td th:text="${p.name}"></td>
+							
+						
+						
+							
+							<td><a
+								onclick="return confirm ('Voulez vous vraiment supprimer ?')"
+								class="btn btn-danger"
+								th:href="@{deletecategorie(id=${p.id},        
+          keyword=${keyword},page=${currentPage},size=${size})}">Delete</a>
+							</td>
+							<td><a class="btn btn-dark"
+								th:href="@{formcatupdate(id=${p.id})}">Edit</a></td>
+								
+						</tr>
+					</table>
+<a class="btn btn-dark"
+								th:href="@{formcategorie}">Add</a>
+				
+					<ul class="nav nav-pills">
+						<li th:each="page,status:${pages}"><a
+							th:class="${status.index==currentPage?'btn btn.primary':'btn'}"
+							th:href="@{categories(page=${status.index},keyword=${keyword}, size=${$size})}"
+							th:text="${status.index}"></a></li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

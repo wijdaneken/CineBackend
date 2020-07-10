@@ -35,8 +35,10 @@ public class Film {
 	private String photo;
 	@OneToMany(mappedBy="film")
 	@JsonProperty(access = Access.WRITE_ONLY)
+	@ToString.Exclude
 	private Collection<Projection> projections;
 	@ManyToOne
+	@ToString.Exclude
 	private Categorie categorie;
 
 }

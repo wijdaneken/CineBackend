@@ -30,5 +30,11 @@ public class Categorie {
 	private String name;
 	@OneToMany(mappedBy = "categorie")
 	@JsonProperty(access = Access.WRITE_ONLY)
+	
 	private Collection<Film> films;
+	
+	
+
+
+	
 }

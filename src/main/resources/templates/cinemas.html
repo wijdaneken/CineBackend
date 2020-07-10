@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="templae1">
+<head>
+<meta charset="utf-8">
+<title>Cinemas</title>
+</head>
+<body>
+	<div layout:fragment="pageContent">
+		<div class="container mt-5">
+			<div class="card">
+				<div class="card-header">Cinema</div>
+				<div class="card-body">
+
+					<form method="get" th:actions="@{cine}">
+						<div class="form-group">
+							<label>Name:</label> <input type="text" name="keyword"
+								placeholder="Search name.." th:value="${keyword}">
+							<button class="btn btn-dark">Search</button>
+						</div>
+					</form>
+
+					<table class="table">
+						<tr>
+
+							<th>ID</th>
+							<th>Name</th>
+							<th>Longtide</th>
+							<th>Latitude</th>
+							<th>Altitude</th>
+							<th>Room number</th>
+					
+						
+						</tr>
+						<tr th:each="p:${cinemas}">
+							<td th:text="${p.id}"></td>
+							<td th:text="${p.name}"></td>
+							<td th:text="${p.longtide}"></td>
+							<td th:text="${p.latitude}"></td>
+							<td th:text="${p.altitude}"></td>
+							<td th:text="${p.nombreSalles}"></td>
+						
+						
+							
+							<td><a
+								onclick="return confirm ('Voulez vous vraiment supprimer ?')"
+								class="btn btn-danger"
+								th:href="@{deletecinema(id=${p.id},        
+          keyword=${keyword},page=${currentPage},size=${size})}">Delete</a>
+							</td>
+							<td><a class="btn btn-dark"
+								th:href="@{formcineupdate(id=${p.id})}">Edit</a></td>
+								
+
+
+
+						</tr>
+					</table>
+<a class="btn btn-dark"
+								th:href="@{formcinema}">Add</a>
+				
+					<ul class="nav nav-pills">
+						<li th:each="page,status:${pages}"><a
+							th:class="${status.index==currentPage?'btn btn.primary':'btn'}"
+							th:href="@{cine(page=${status.index},keyword=${keyword}, size=${$size})}"
+							th:text="${status.index}"></a></li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
