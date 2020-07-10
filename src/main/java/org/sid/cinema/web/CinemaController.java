@@ -120,44 +120,6 @@ public class CinemaController {
 		return listf(model, page, size, keyword);
 
 	}
-	/*
-	 * @GetMapping(path ="/projectionss" ) public String lisstt (Model model,
-	 * 
-	 * @RequestParam (name= "page", defaultValue= "0")int page,
-	 * 
-	 * @RequestParam (name= "size", defaultValue= "6")int size,
-	 * 
-	 * @RequestParam (name= "keyword", defaultValue= "")String mc) {
-	 * 
-	 * Page<Projection>pageprojections=projectionRepository.findAll(
-	 * PageRequest.of(page, size));
-	 * model.addAttribute("projections",pageprojections.getContent());
-	 * model.addAttribute("pages", new int[pageprojections.getTotalPages()]);
-	 * model.addAttribute("currentPage", page); model.addAttribute("keyword", mc);
-	 * model.addAttribute("size", size); return "projections"; }
-	 * 
-	 * @GetMapping(path ="/deleteProj") public String dddelete2(Long id,String
-	 * keyword,int page,int size,Model model) { projectionRepository.deleteById(id);
-	 * return lisstt(model,page,size,keyword); }
-	 * 
-	 * @RequestMapping(value="/Formproj",method=RequestMethod.GET) public String
-	 * Formproj(Model model) { model.addAttribute("projection",new Projection());
-	 * return"Formproj"; }
-	 * 
-	 * @RequestMapping(value="/Sssaveproj",method=RequestMethod.POST) public String
-	 * save(Projection projection) {projectionRepository.save(projection);
-	 * return"redirect:projectionss"; }
-	 * 
-	 * @PostMapping(path = "/saveprojection") public String saveProjection(
-	 * Projection projection) { projectionRepository.save(projection); return
-	 * "redirect:projectionss"; }
-	 * 
-	 * @GetMapping("/projectionupdate") public String editprojection(Model model,
-	 * Long id) { Projection p = projectionRepository.findById(id).get();
-	 * model.addAttribute("projection", p); model.addAttribute("mode", "edit");
-	 * return "updateprojection"; }
-	 */
-
 	
 	@GetMapping(path ="/projectionss" )
 	public String lisstt (Model model, 

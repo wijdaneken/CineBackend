@@ -1,4 +1,4 @@
-/* package org.sid.cinema.security;
+﻿/* package org.sid.cinema.security;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,8 +21,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 	}
 }
 	
-	
-	
-	Pour le cas ou les utilisateurs sont connues et fixes d’une manière statique */
-	//auth.inMemoryAuthentication().withUser("admin").password("1234").roles("ADMIN","USER");
-	//auth.inMemoryAuthentication().withUser("user").password("1234").roles("USER");
